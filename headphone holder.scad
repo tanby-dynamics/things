@@ -1,5 +1,5 @@
 /* Basic headphone holder */
-$fn = 100;
+$fn = 200;
 height = 225;
 headphoneWidth = 40;
 
@@ -14,6 +14,7 @@ module base() {
 module holder() {
     difference() {
         cylinder(h = height, r = headphoneWidth/2+5);
+        
         rotate([90, 0, 0])
         translate([0, height, -30])
         cylinder(h = 60, r = headphoneWidth/2);
