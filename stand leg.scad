@@ -4,6 +4,7 @@ height = 140;
 bracketLength = 80;
 standWidth = 30;
 bracketThickness = 5;
+holeDiameter = 5;
 
 // stand
 cube([standWidth, standWidth, height]);
@@ -55,7 +56,7 @@ module bracket2() {
 
 module holes() {
     translate([standWidth/2, standWidth/2, -0.5])
-    cylinder(h=bracketThickness+1.0, d=6);
+    cylinder(h=bracketThickness+1.0, d=holeDiameter);
     translate([bracketLength - standWidth/2, standWidth/2, -0.5])
-    cylinder(h=bracketThickness+1.0, d=6);
+    cylinder(h=bracketThickness+1.0, d=holeDiameter);
 }
