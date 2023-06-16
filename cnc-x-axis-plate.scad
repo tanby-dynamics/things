@@ -22,15 +22,19 @@ module railHolder() {
         translate([plateWidth + 10, 80 - plateWidth - 20, -0.5])
         cylinder(h = plateWidth + 1.0, d = railScrewDiam);
     }
+    
+    // brace
     cube([20 + plateWidth*2, plateWidth, 40]);
-    translate([0, 80, plateWidth])
-    cube([20 + plateWidth*2, plateWidth, 20]);
+    
+    // 2040 box
+    translate([0, 80 + 0.5, plateWidth])
+    cube([20 + plateWidth*2, plateWidth - 0.5, 20]);
     translate([0, 40 - plateWidth, plateWidth])
-    cube([20 + plateWidth*2, plateWidth, 20]);
-    translate([0, 40, plateWidth])
-    cube([plateWidth, 40, 20]);
-    translate([20 + plateWidth, 40, plateWidth])
-    cube([plateWidth, 40, 20]);
+    cube([20 + plateWidth*2, plateWidth - 0.5, 20]);
+    translate([0, 40 - 0.5, plateWidth])
+    cube([plateWidth - 0.5, 40 + 1.0, 20]);
+    translate([20 + plateWidth + 0.5, 40 - 0.5, plateWidth])
+    cube([plateWidth - 0.5, 40 + 1.0, 20]);
 }
 
 module base() {
