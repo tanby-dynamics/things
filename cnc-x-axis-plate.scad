@@ -24,15 +24,25 @@ module railHolder() {
     }
     
     // brace
+    // on bed
     cube([20 + plateWidth*2, plateWidth, 40]);
+    // bed brace (guessed numbers ;-) )
+    translate([0, plateWidth, plateWidth])
+    cube([plateWidth/2, 24, 20]);
+    translate([20 + plateWidth*1.5, plateWidth, plateWidth])
+    cube([plateWidth/2, 24, 20]);
     
     // 2040 box
+    // t
     translate([0, 80 + 0.5, plateWidth])
     cube([20 + plateWidth*2, plateWidth - 0.5, 20]);
+    // b
     translate([0, 40 - plateWidth, plateWidth])
     cube([20 + plateWidth*2, plateWidth - 0.5, 20]);
+    // l
     translate([0, 40 - 0.5, plateWidth])
     cube([plateWidth - 0.5, 40 + 1.0, 20]);
+    // r
     translate([20 + plateWidth + 0.5, 40 - 0.5, plateWidth])
     cube([plateWidth - 0.5, 40 + 1.0, 20]);
 }
@@ -41,8 +51,13 @@ module base() {
     difference() {
         cube([baseWidth, baseHeight, plateWidth]);
 
+        // l
         translate([baseHeight/2, baseHeight/2, -0.5])
         cylinder(h = plateWidth + 1.0, d = baseScrewDiam);
+        // m
+        translate([baseWidth/2, baseHeight/2, -0.5])
+        cylinder(h = plateWidth + 1.0, d = baseScrewDiam);
+        // r
         translate([baseWidth - baseHeight/2, baseHeight/2, -0.5])
         cylinder(h = plateWidth + 1.0, d = baseScrewDiam);
     }
