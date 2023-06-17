@@ -7,13 +7,23 @@ baseWidth = 20 + plateWidth*2 + 40;
 baseScrewDiam = 6;
 railScrewDiam = 5;
 beltTensionerL = 30;
-railBoxBuffer = 0.5;
+railBoxBuffer = 0.2;
 
 // uncomment this translate to get the mirrored (left) part
 //translate([40, 0, 0])
-railHolder();
-translate([0, -baseHeight, 0])
-base();
+//railHolder();
+//translate([0, -baseHeight, 0])
+//base();
+extrusionBox();
+difference() {
+    translate([0, 32])
+    cube([20 + plateWidth*2, 40+plateWidth*2, plateWidth]);
+    // Rail screws
+    translate([plateWidth + 10, 80 - plateWidth, -0.5])
+    cylinder(h = plateWidth + 1.0, d = railScrewDiam);
+    translate([plateWidth + 10, 80 - plateWidth - 20, -0.5])
+    cylinder(h = plateWidth + 1.0, d = railScrewDiam);
+}
 
 module railHolder() {
     difference() {
@@ -39,7 +49,16 @@ module railHolder() {
     translate([20 + plateWidth*1.5, plateWidth, plateWidth])
     cube([plateWidth/2, 24, 20]);
     
-    // 2040 box
+    extrusionBox();
+    
+    // belt tensioner surround
+    translate([5, 80 + plateWidth, plateWidth])
+    cube([plateWidth/2, beltTensionerL, 30]);
+    translate([15 + plateWidth*1.5, 80 + plateWidth, plateWidth])
+    cube([plateWidth/2, beltTensionerL, 30]);
+}
+
+module extrusionBox() {
     // t
     translate([0, 80 + railBoxBuffer, plateWidth])
     cube([20 + plateWidth*2, plateWidth - railBoxBuffer, 20]);
@@ -52,12 +71,6 @@ module railHolder() {
     // r
     translate([20 + plateWidth + railBoxBuffer, 40 - 0.5, plateWidth])
     cube([plateWidth - railBoxBuffer, 40 + 1.0, 20]);
-    
-    // belt tensioner surround
-    translate([5, 80 + plateWidth, plateWidth])
-    cube([plateWidth/2, beltTensionerL, 30]);
-    translate([15 + plateWidth*1.5, 80 + plateWidth, plateWidth])
-    cube([plateWidth/2, beltTensionerL, 30]);
 }
 
 module base() {
