@@ -7,7 +7,7 @@ baseWidth = 20 + plateWidth*2 + 40;
 baseScrewDiam = 6;
 railScrewDiam = 5;
 beltTensionerL = 30;
-railBoxBuffer = 0.2;
+railBoxBuffer = 0.1;
 
 // uncomment this translate to get the mirrored (left) part
 //translate([40, 0, 0])
