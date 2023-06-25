@@ -1,9 +1,9 @@
 $fn = 100;
 
-width = 37;
-depth = 100;
+width = 26;
+depth = 20;
 height = 60;
-standWidth = 60;
+standWidth = 50;
 standBaseHeight = 20;
 
 difference() {
@@ -16,6 +16,6 @@ difference() {
         sphere(d = 2.5);
     }
     translate([0, 0, standBaseHeight])
-    cube([width + 5, depth + 5, height], center = true);
+    cube([width, depth + 5, height], center = true);
 }
     
