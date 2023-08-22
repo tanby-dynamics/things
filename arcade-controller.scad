@@ -5,9 +5,9 @@ buttonDiameter = 30;
 smallButtonDiameter = 24;
 shellThickness = 2;
 y = 45;
-x = 55;
+x = 35; // 55;
 boxHeight = 40;
-chassisX = 260;
+chassisX = 230;
 chassisY = 150;
 
 translate([0, 0, boxHeight - shellThickness])
