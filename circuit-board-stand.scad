@@ -6,11 +6,13 @@
 
 $fn = 100;
 
+// For 90x150 perfboard
 width = 82;
 length = 135;
+
 standoffDiameter = 5;
-standoffHeight = 5;
-standoffInsertDiameter = 3;
+standoffHeight = 8;
+standoffInsertDiameter = 4; // M3
 
 translate([-5, -5, 0])
 cube([width + 10, length + 10, 1.0]);
