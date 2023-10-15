@@ -1,48 +1,83 @@
-// 3.5" and 2.5" drive bays
+// HDD/SSD bays
 $fn = 100;
 
 shellThickness = 1.0;
 
-trayWidth = inchesToMm(3.5);
-trayHeight = 20.0;
-trayDepth = 120.0;
+trayWidth = 102;
+trayHeight = 30.0;
+trayDepth = 100.0;
+baseHeight = 10;
 
-tray();
+base(baseHeight);
+translate([0, 0, baseHeight]) {
+    tray();
+    translate([0, 0, trayHeight + shellThickness])
+    tray();
+    translate([0, 0, (trayHeight + shellThickness)*2])
+    tray();
+    translate([0, 0, (trayHeight + shellThickness)*3])
+    tray();
+}
 
 module tray() {
     // bottom
-    translate([shellThickness, 0, 0])
-    cutoutWall(trayWidth, trayDepth);
+    cutoutWall(trayWidth, trayDepth, 1.0);
     
     // top
-    translate([shellThickness, 0, trayHeight+shellThickness])
-    cutoutWall(trayWidth, trayDepth);
+    translate([0, 0, trayHeight+shellThickness])
+    cutoutWall(trayWidth, trayDepth, 1.0);
     
     // left
-    translate([shellThickness*2, 0, shellThickness])
-    rotate([0, 270, 0])
-    cutoutWallVert(trayHeight, trayDepth);
+    translate([shellThickness, 0, shellThickness])
+    wallVert(trayHeight, trayDepth);
     
     // right
+    translate([trayWidth + shellThickness, 0, shellThickness])
+    wallVert(trayHeight, trayDepth);
 }
 
-module cutoutWall(w, d) {
+module base(height) {
+    translate([-20, 0, 0])
     difference() {
-        shellWall(w, d);
+        shellWall(trayWidth + 40, trayDepth);
+        translate([10, 10, -0.05])
+        cylinder(h=shellThickness+0.1, d=4);
+        translate([10, trayDepth - 10, -0.05])
+        cylinder(h=shellThickness+0.1, d=4);
+        translate([trayWidth + 30, 10, -0.05])
+        cylinder(h=shellThickness+0.1, d=4);
+        translate([trayWidth + 30, trayDepth - 10, -0.05])
+        cylinder(h=shellThickness+0.1, d=4);
+    }
+    
+    translate([shellThickness, 0, 0])
+    rotate([0, 270, 0])
+    shellWall(height, trayDepth);
+    
+    translate([shellThickness + trayWidth, 0, 0])
+    rotate([0, 270, 0])
+    shellWall(height, trayDepth);
+}
+
+module cutoutWall(w, d, cutoutScale) {
+    difference() {
+        shellWall(w + shellThickness, d);
         // cut out
         translate([w/2, d/2, -0.05])
-        scale([1, 1.4, 1])
+        scale([1, cutoutScale, 1])
         cylinder(h=shellThickness+0.1, d=w*0.75);
     }
 }
 
-module cutoutWallVert(w, d) {
+module wallVert(w, d) {
+    rotate([0, 270, 0])
     difference() {
         shellWall(w, d);
-        // cut out
-        translate([w/2, d/2, -0.05])
-        scale([1, 10.0, 1])
-        cylinder(h=shellThickness+0.1, d=w*0.5);
+        // screw slot
+        //translate([6, 7.5, -0.05])
+        // (inverted, for vertical mount)
+        translate([w - 10, 7.5, -0.05])
+        cube([4, d - 15, shellThickness+0.1]);
     }
 }
 

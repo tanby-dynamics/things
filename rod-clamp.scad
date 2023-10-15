@@ -2,7 +2,7 @@
 // would glue something else to it. Like another rod clamp.
 // This is set up for a 6.5mm rod, an M5 bolt, and a push
 // fit threaded insert.
-// Rotate it 90 degrees on the X axis to print with no supports.
+// Rotate it 90 degrees on the X axis and print with no supports.
 $fn = 100;
 
 rodD = 6.52;
