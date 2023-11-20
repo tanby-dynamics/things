@@ -8,7 +8,22 @@ trayHeight = 30.0;
 trayDepth = 100.0;
 baseHeight = 10;
 
-base(baseHeight);
+// vertical orientation
+vertical_base();
+translate([0, trayHeight*4 + shellThickness*5, 0])
+rotate([90, 0, 0]) {
+    tray();
+    translate([0, 0, trayHeight + shellThickness])
+    tray();
+    translate([0, 0, (trayHeight + shellThickness)*2])
+    tray();
+    translate([0, 0, (trayHeight + shellThickness)*3])
+    tray();
+}
+
+// horizontal orientation
+/*
+horizontal_base(baseHeight);
 translate([0, 0, baseHeight]) {
     tray();
     translate([0, 0, trayHeight + shellThickness])
@@ -18,6 +33,7 @@ translate([0, 0, baseHeight]) {
     translate([0, 0, (trayHeight + shellThickness)*3])
     tray();
 }
+*/
 
 module tray() {
     // bottom
@@ -36,7 +52,7 @@ module tray() {
     wallVert(trayHeight, trayDepth);
 }
 
-module base(height) {
+module horizontal_base(height) {
     translate([-20, 0, 0])
     difference() {
         shellWall(trayWidth + 40, trayDepth);
@@ -57,6 +73,23 @@ module base(height) {
     translate([shellThickness + trayWidth, 0, 0])
     rotate([0, 270, 0])
     shellWall(height, trayDepth);
+}
+
+module vertical_base() {
+    module vertical_base_edge() {
+        difference() {
+            shellWall(trayHeight*4 + shellThickness*5, 20);
+            translate([10, 10, -0.05])
+            cylinder(h=shellThickness+0.1, d=4);
+            translate([trayHeight*4 + shellThickness*5 - 10, 10, -0.05])
+            cylinder(h=shellThickness+0.1, d=4);
+        }
+    }
+    rotate([0, 0, 90]) {
+        vertical_base_edge();
+        translate([0, -(trayWidth + 20), 0])
+        vertical_base_edge();
+    }
 }
 
 module cutoutWall(w, d, cutoutScale) {
