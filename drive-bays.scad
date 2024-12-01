@@ -1,7 +1,7 @@
 // HDD/SSD bays
 $fn = 100;
 
-shellThickness = 1.0;
+shellThickness = 2.0;
 
 trayWidth = 102;
 trayHeight = 30.0;
