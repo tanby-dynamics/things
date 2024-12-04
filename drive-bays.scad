@@ -3,7 +3,7 @@ $fn = 100;
 
 shellThickness = 2.0;
 
-trayWidth = 102;
+trayWidth = 104;
 trayHeight = 30.0;
 trayDepth = 100.0;
 baseHeight = 10;
@@ -96,9 +96,9 @@ module cutoutWall(w, d, cutoutScale) {
     difference() {
         shellWall(w + shellThickness, d);
         // cut out
-        translate([w/2, d/2, -0.05])
-        scale([1, cutoutScale, 1])
-        cylinder(h=shellThickness+0.1, d=w*0.75);
+        //translate([w/2, d/2, -0.05])
+        //scale([1, cutoutScale, 1])
+        //cylinder(h=shellThickness+0.1, d=w*0.75);
     }
 }
 
