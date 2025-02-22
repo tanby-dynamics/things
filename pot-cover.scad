@@ -9,7 +9,7 @@ $fn = 200;
 //pot_cover(135, 137, 95, 97);
 
 // small
-pot_cover(135, 137, 82, 97);
+pot_cover(135, 137, 87, 97);
 
 module pot_cover(id, od, ih, oh) {
     difference() {
