@@ -1,5 +1,8 @@
 $fn = 100;
 
+screw_hole_d = 3.5;
+
+scale([0.95, 0.95, 0.95])
 dovetail_final();
 //hook_final();
 
@@ -37,17 +40,17 @@ module dovetail_final() {
             // screw holes
             translate([-1, 5, 10])
             rotate([0, 90, 0])
-            cylinder(h = 20, r = 1.5);
+            cylinder(h = 20, r = screw_hole_d / 2);
             translate([-1, 25, 10])
             rotate([0, 90, 0])
-            cylinder(h = 20, r = 1.5);
+            cylinder(h = 20, r = screw_hole_d / 2);
             // screw heads
             translate([6, 5, 10])
             rotate([0, 90, 0])
-            cylinder(h = 4.1, r1 = 1.5, r2 = 4);
+            cylinder(h = 4.1, r1 = screw_hole_d / 2, r2 = 5);
             translate([6, 25, 10])
             rotate([0, 90, 0])
-            cylinder(h = 4.1, r1 = 1.5, r2 = 4);
+            cylinder(h = 4.1, r1 = screw_hole_d / 2, r2 = 5);
         }
     }
 }
