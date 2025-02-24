@@ -2,9 +2,9 @@ $fn = 100;
 
 screw_hole_d = 3.5;
 
-scale([0.95, 0.95, 0.95])
-dovetail_final();
-//hook_final();
+//scale([0.95, 0.95, 0.95])
+//cleat_final();
+hook_final();
 
 module hook_final() {
     translate([70, -85, 0])
@@ -29,13 +29,13 @@ module hook_final() {
             cube([20, 60, 22]);
         }
 
-        dovetail();
+        cleat();
     }
 }
 
-module dovetail_final() {
+module cleat_final() {
     difference() {
-        dovetail();
+        cleat();
         union() {
             // screw holes
             translate([-1, 5, 10])
@@ -55,7 +55,7 @@ module dovetail_final() {
     }
 }
 
-module dovetail() {
+module cleat() {
     linear_extrude(20)
     polygon([
         [0,0],
