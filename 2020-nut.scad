@@ -1,8 +1,9 @@
 $fn = 100;
 
-// There are two kinds of 2020 extrusion, t-slot (which is most of what I could find on Thingiverse)
-// and a type with a narrower slot, which can be identified by having 4mm holes in the corners of the
-// extrusion. This nut is designed to fit that type of extrusion.
+// There are two kinds of 2020 extrusion, t-slot and a type with 
+// a narrower slot, which can be identified by having 4mm holes 
+// in the corners of the extrusion. This nut is designed to fit 
+// that type of extrusion.
 
 nut();
 
